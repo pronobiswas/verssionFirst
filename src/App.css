@@ -1,0 +1,149 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+nav{
+  width: 100%;
+  height: 100px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  width: 20%;
+  height: 80px;
+  background: #00000033;
+}
+.logo img{
+  max-width: 300px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mid{
+  width: 40%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+}
+.mid input{
+  position: relative;
+  border: 1px solid transparent;
+  outline: 1px solid transparent;
+  padding: 5px;
+  box-shadow: 0 0 0 1px #80808087;
+}
+.location{
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  background-color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  border: 1px solid gray;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.locationDropDwon{
+  position: absolute;
+  width: 100%;
+  background-color: #00000033;
+  opacity: 0;
+  top: 13 px;
+  left: 0 ;
+  transition: .3s all linear;
+  display: none;
+}
+.location:hover .locationDropDwon{
+opacity: 1;
+}
+.locationDropDwon ul li{
+  padding: 10px 0;
+  font-size: 16px;
+  border-bottom: 1px solid gray;
+  position: relative;
+}
+.locationDropDwon ul li:hover{
+  background-color: gray;
+}
+.widghtGet{
+  position: absolute;
+  top: 0;
+  left: 200px;
+  background-color: rgb(180, 4, 4);
+  opacity: 0;
+  display: none;
+}
+.widghtGet ul{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.locationDropDwon ul li:hover .widghtGet{
+  opacity: 1;
+}
+/* =============last secstarthere========= */
+.add{
+  width: 40%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 40px;
+}
+.langTogle{
+  width: 40px;
+  height: 40px;
+  border : 1px solid gray;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addBtn{
+  padding: 8px 24px;
+  background-color: green;
+  color: white;
+}
+.login{
+  padding: 8px 18px;
+  position: relative;
+}
+.login span{
+  font-size: 20px;
+  line-height: 0;
+  padding: 4px;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  border: 1px solid gray;
+  border-radius: 50%;
+
+}
+/* ============appcomponent========== */
+#AddComponent{
+  width: 100%;
+  border: 1px solid gray;
+  padding: 10px;
+
+}
+.cataGoryTxt{
+padding: 10px;
+display: flex;
+}
+.catagoryTxtItem{
+  padding: 10px 25px;
+  border: 1px solid gray;
+}
