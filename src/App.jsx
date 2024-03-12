@@ -9,7 +9,6 @@ let handleBtn=()=>{
 }
   return (
     <>
-    <h1>hello</h1>
       <header>
         <div className="container">
           <nav>
