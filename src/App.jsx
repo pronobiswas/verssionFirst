@@ -4,15 +4,12 @@ import { CiSearch } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
 
 function App() {
-  const [count, setCount] = useState(0)
-  let handleBtn = ()=>{
-  
-
-  }
-  
-
+let handleBtn=()=>{
+  console.log("hi");
+}
   return (
     <>
+    <h1>hello</h1>
       <header>
         <div className="container">
           <nav>
@@ -61,16 +58,41 @@ function App() {
         </div>
       </header>
       <section id="AddComponent">
-        <ul className='cataGoryTxt'>
-          <li className="catagoryTxtItem"><a href="#">Lorem, ipsum dolor.</a></li>
-          <li className="catagoryTxtItem"><a href="#">Lorem, ipsum dolor.</a></li>
-          <li className="catagoryTxtItem"><a href="#">Lorem, ipsum dolor.</a></li>
-          <li className="catagoryTxtItem"><a href="#">Lorem, ipsum dolor.</a></li>
-          <li className="catagoryTxtItem"><a href="#">Lorem, ipsum dolor.</a></li>
-          <li className="catagoryTxtItem"><a href="#">Lorem, ipsum dolor.</a></li>
-        </ul>
+
+        <div className="menuwarpper">
+
+          <ul className='cataGoryTxt'>
+            
+            {/* ==================basavara============ */}
+            <li className="catagoryTxtItem">
+              <a href="#">বাসা <span>ভাড়া</span></a>
+              <div className="subCatagory">
+                <ul className="subCatagoryList">
+                  <li className="subCatagoryListItem">Lorem, ipsum dolor.</li>
+                  <li className="subCatagoryListItem">Lorem, ipsum dolor.</li>
+                  <li className="subCatagoryListItem">Lorem, ipsum dolor.</li>
+                  <li className="subCatagoryListItem">Lorem, ipsum dolor.</li>
+                  <li className="subCatagoryListItem">Lorem, ipsum dolor.</li>
+                </ul>
+              </div>
+            </li>
+            {/* ===============hotel vara========== */}
+            <li className="catagoryTxtItem"><a href="#">হোটেল  <span>ভাড়া</span> </a></li>
+
+            <li className="catagoryTxtItem"><a href="#">গাড়ি  <span>ভাড়া</span> </a></li>
+
+            <li className="catagoryTxtItem"><a href="#">দোকান <span>ভাড়া</span> </a></li>
+
+            <li className="catagoryTxtItem"><a href="#">ডেকরেশন <span>ভাড়া</span> </a></li>
+
+            <li className="catagoryTxtItem"><a href="#">অন্যান <span>ভাড়া</span> </a></li>
+            <li className="catagoryTxtItem"><a href="#">সেবা <span></span> </a></li>
+          </ul>
+
+        </div>
        
       </section>
+
       
     </>
   )
