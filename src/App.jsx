@@ -94,8 +94,8 @@ let handleBtn=()=>{
       <section id='sliders'>
         <h3>বাসা ভাড়া</h3>
         <div className="slidersWarrpper cntainer">
-          <div className="slides"></div>
-          <div className="slides"></div>
+          <div className="slides">হোটেল</div>
+          <div className="slides">বাসা</div>
           <div className="slides"></div>
           <div className="slides"></div>
         </div>
