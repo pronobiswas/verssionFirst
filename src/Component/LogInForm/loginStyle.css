@@ -1,3 +1,11 @@
+/* .loginMain{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+} */
 #loginForm{
     width: 300px;
     padding: 20px;
@@ -5,13 +13,28 @@
     text-align: center;
     border: 1px solid gray;
 }
+#loginForm a{
+    color: blue;
+}
 #loginForm h2{
     text-transform: uppercase;
+    margin-bottom: 5px;
 }
-#loginForm >input{
+/* ==============inputIcon============= */
+.userMail,.userPassword{
+    position: relative;
+}
+.inputUserIconIcon,.inputPassIcon{
+    position: absolute;
+    top: 7px;
+    left: 5px;
+}
+/* ==============inputIcon============= */
+#loginForm input[type="text"],input[type="password"]{
     width: 100%;
     margin-bottom: 8px;
     padding: 5px;
+    padding-left: 25px;
 }
 .loginHelp{
     display: flex;

@@ -3,17 +3,26 @@ import './loginStyle.css'
 
 import { FcGoogle } from "react-icons/fc";
 import { FaSquareFacebook } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const LoginForm = () => {
   return (
     <>
+    <div className="loginMain">
       <div id="loginForm">
             <h2>Log In</h2>
-            <br />
-            <input type="text" />
-            <br />
-            <input type="password" />
-            <br />
+
+            <div className="userMail">
+                <span className='inputUserIconIcon'><FaRegUser /></span>
+                <input type="text" placeholder='Enter your Email/UserName'/>
+            </div>
+
+            <div className="userPassword">
+                <span className='inputPassIcon'><RiLockPasswordLine /></span>
+                <input type="password" placeholder='Confirm your passWord'/>
+            </div>
+            
             <div className="loginHelp">
                 <p>
                     <input type="checkbox" id='rememberMe'/>
@@ -40,6 +49,7 @@ const LoginForm = () => {
                 </div>
             </div>
       </div>
+    </div>
     </>
   )
 }
