@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './loginStyle.css'
 
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +7,16 @@ import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 
 const LoginForm = () => {
+
+    let [userInput, setUserInput] = useState(" ")
+    let handleLoginInput = (e)=>{
+        setUserInput = e.target.value;
+        console.log(e.target.value);
+    };
+
+    let handleloginBtn = ()=>{
+        console.log(userInput);
+    };
   return (
     <>
     <div className="loginMain">
@@ -15,7 +25,7 @@ const LoginForm = () => {
 
             <div className="userMail">
                 <span className='inputUserIconIcon'><FaRegUser /></span>
-                <input type="text" placeholder='Enter your Email/UserName'/>
+                <input onChange={handleLoginInput} type="text" placeholder='Enter your Email/UserName'/>
             </div>
 
             <div className="userPassword">
@@ -30,7 +40,7 @@ const LoginForm = () => {
                 </p>
                 <p><a href="#">Forgot Account</a></p>
             </div>
-            <button className='loginBtn'>Log in</button>
+            <button onClick={handleloginBtn} className='loginBtn'>Log in</button>
             <br />
             <p>Don't have account? <a href="#">Sign Up here</a></p>
 
