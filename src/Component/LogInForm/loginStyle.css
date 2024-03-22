@@ -1,0 +1,40 @@
+#loginForm{
+    width: 300px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid gray;
+}
+#loginForm h2{
+    text-transform: uppercase;
+}
+#loginForm >input{
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 5px;
+}
+.loginHelp{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.loginBtn{
+    padding: 5px;
+    width: 100%;
+    margin: 25px 0;
+}
+.loginWithGoogleBtn, .loginWithFacebookBtn{
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+}
+/* .loginWithGoogleBtn{
+    background-color: aqua;
+} */
+.facebookIcon{
+    color: blue;
+}

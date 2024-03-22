@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import { CiSearch } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
+import LoginForm from './Component/LogInForm/LoginForm';
+import RegestionForm from './Component/RegestionForm/RegestionForm';
 
 function App() {
 let handleBtn=()=>{
@@ -93,13 +95,15 @@ let handleBtn=()=>{
       </section>
       <section id='sliders'>
         <h3>বাসা ভাড়া</h3>
-        <div className="slidersWarrpper cntainer">
+        <div className="slidersWarrpper container">
           <div className="slides">হোটেল</div>
           <div className="slides">বাসা</div>
-          <div className="slides"></div>
+          <div className="slides">GAri</div>
           <div className="slides"></div>
         </div>
       </section>
+      <LoginForm/>
+      <RegestionForm/>
 
       
     </>
