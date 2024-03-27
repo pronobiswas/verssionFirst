@@ -30,7 +30,7 @@
     left: 5px;
 }
 /* ==============inputIcon============= */
-#loginForm input[type="text"],input[type="password"]{
+#loginForm input[type="text"] , #loginForm input[type="password"]{
     width: 100%;
     margin-bottom: 8px;
     padding: 5px;

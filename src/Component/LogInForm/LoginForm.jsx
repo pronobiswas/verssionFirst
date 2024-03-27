@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState } from 'react';
 import './loginStyle.css'
 
 import { FcGoogle } from "react-icons/fc";
@@ -8,14 +9,15 @@ import { RiLockPasswordLine } from "react-icons/ri";
 
 const LoginForm = () => {
 
-    let [userInput, setUserInput] = useState(" ")
+    // let [userLoginInput, setUserLoginInput] = useState("");
+    let [text , setText] = useState("");
     let handleLoginInput = (e)=>{
-        setUserInput = e.target.value;
-        console.log(e.target.value);
+        setText = e.target.value;
+        console.log(setText);
     };
 
     let handleloginBtn = ()=>{
-        console.log(userInput);
+        console.log(text);
     };
   return (
     <>
