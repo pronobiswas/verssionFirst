@@ -13,18 +13,37 @@ const RegestionForm = () => {
     signUpMail : "" ,
     signUpPass : ""
   })
+
+  let [signUpValue , setSignUpValue] = useState([]);
+
   // ========HandleSingnUpInput========
   let signUpInput =(e)=> {
     let {name , value} = e.target;
   
     setSingUpInputValue({...signUpInputValue , [name] : value});
-    if(signUpInputValue.)
+    
   };
-  // ========HandleSingnUpInput========
+  // ========HandleSingnUpInput Btn========
+  // ========HandleSingnUpInput Btn========
   let handleSignUpBtn =()=> {
-    if(!signUpInputValue.signUpName){
-      console.log("nam dite hobe");
-    };
+
+    if(signUpInputValue.signUpName == ""){
+      setSignUpError({signUpName : "Name Fild is Required"});
+    }
+    
+    let myarray = [...signUpValue];
+    myarray.push({
+      username : signUpInputValue.signUpName,
+      usermali : signUpInputValue.signUpMail,
+      passWord : signUpInputValue.signUpPass
+    })
+    setSignUpValue(myarray)
+    signUpInputValue.signUpName = location.reload
+
+
+
+    console.log(signUpValue);
+
   };
 
 
@@ -36,18 +55,30 @@ const RegestionForm = () => {
             <h2>Sign Up</h2>
 
             <div className="signUpName">
-              <input type="text" id='signUpName'name='signUpName' placeholder='Enter your name' onChange={signUpInput}/>
+              <input type="text" id='signUpName'name='signUpName' placeholder='Enter your name' onChange={signUpInput} value={signUpInputValue.signUpName}/>
+              {signUpError.signUpName &&
+                <p>{signUpError.signUpName}</p>
+              }
             </div>
 
             <div className="signUpMail">
               <input type="email" id='signUpMail'name='signUpMail' placeholder='Enter your mail' onChange={signUpInput}/>
+              {signUpError.signUpMail &&
+                <p>{signUpError.signUpMail}</p>
+              }
             </div>
             <div className="signUpPass">
               <input type="password" id='signUpPass'name='signUpPass' placeholder='enter your password' onChange={signUpInput}/>
+              {signUpError.signUpPass &&
+                <p>{signUpError.signUpPass}</p>
+              }
             </div>
 
-            <div className="SignUpConfirmPass"></div>
+            <div className="SignUpConfirmPass">
+              <input type="password" id='confirmSignUpPass'name='confirmSignUpPass' placeholder='enter your password' onChange={signUpInput}/>
+            </div>
             <button onClick={handleSignUpBtn} id='signUpBtn'>signup</button>
+            
 
           </div>
         </div>

@@ -8,4 +8,5 @@
 .signUpName input{ padding: 8px 12px; margin: 4px;}
 .signUpMail input{ padding: 8px 12px; margin: 4px;}
 .signUpPass input{ padding: 8px 12px; margin: 4px;}
+.SignUpConfirmPass input{ padding: 8px 12px; margin: 4px;}
 #signUpBtn{width: 100%; padding: 8px 0;}
