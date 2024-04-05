@@ -38,11 +38,11 @@ const RegestionForm = () => {
       passWord : signUpInputValue.signUpPass
     })
     setSignUpValue(myarray)
-    signUpInputValue.signUpName = location.reload
+    
 
 
 
-    console.log(signUpValue);
+    console.log(myarray);
 
   };
 

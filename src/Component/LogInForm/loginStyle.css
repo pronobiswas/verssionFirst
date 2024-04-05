@@ -1,11 +1,15 @@
-/* .loginMain{
+.loginMain{
     width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: yellow;
+    position: absolute;
+    top: 0;
+    z-index: 999999;
 
-} */
+}
 #loginForm{
     width: 300px;
     padding: 20px;
@@ -60,4 +64,12 @@
 } */
 .facebookIcon{
     color: blue;
+}
+.box{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    margin-left: 230px;
+    
 }

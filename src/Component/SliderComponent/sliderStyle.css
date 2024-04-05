@@ -1,0 +1,13 @@
+.mySwiper{
+    background-color: aliceblue;
+    justify-content: center;
+    margin: 45px 0;
+}
+.mySwiper .box{
+    background-color: #0000ff21;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
