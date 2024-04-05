@@ -2,13 +2,15 @@ import React from 'react'
 import './addversmentStyle.css'
 import './style.scss'
 
-const Addversment = () => {
+const Addversment = ({ShowAdssForm , hideAddsFrom}) => {
 
   let handleCloseSpan =()=>{
-    console.log("joy hori");
+    hideAddsFrom(false)
   };
   return (
     <>
+    {
+      ShowAdssForm &&
     <section id='addsSubmitFrom'>
       <div className="addsFormContainer">
 
@@ -84,6 +86,7 @@ const Addversment = () => {
 
       </div>
     </section>
+    }
     </>
   )
 }

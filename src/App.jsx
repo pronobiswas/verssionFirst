@@ -14,11 +14,15 @@ import Addversment from './Component/Addversment/Addversment';
 function App() {
 
   let [showModal , setShowModal] = useState(false);
+  let[showAddsModal , setShowAddsModal] = useState(false)
 
- let handleBtn=()=>{
-  setShowModal(true)
-  
-}
+  let handleBtn=()=>{
+    setShowModal(true)
+  }
+  let hanndleAddsBtn = ()=>{
+    setShowAddsModal(true)
+  }
+
 
   return (
     <>
@@ -62,7 +66,7 @@ function App() {
               <div className="langTogle">
                 en/bn
               </div>
-              <button className='addBtn'>adds here</button>
+              <button onClick={hanndleAddsBtn} className='addBtn'>adds here</button>
               <button onClick={handleBtn} className='login'><span><FaUserCircle /></span>login</button>
             </div>
 
@@ -142,8 +146,8 @@ function App() {
         </nav>
        
       </section>
-      {/* <Mysliders/> */}
-      <Addversment show = {showModal} hide={setShowModal}/>
+      <Mysliders/>
+      <Addversment ShowAdssForm = {showAddsModal} hideAddsFrom={setShowAddsModal}/>
     </>
   )
 }
