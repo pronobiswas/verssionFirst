@@ -4,9 +4,10 @@ import './App.css';
 import { CiSearch } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
 import LoginForm from './Component/LogInForm/LoginForm';
-import RegestionForm from './Component/RegestionForm/RegestionForm';
 import Mysliders from './Component/SliderComponent/Mysliders';
 import Addversment from './Component/Addversment/Addversment';
+import RegestionForm from './Component/RegestionForm/RegestionForm'
+import firebaseConfig from './Congigaration/FirebaseConfig';
 
 
 
@@ -146,8 +147,11 @@ function App() {
         </nav>
        
       </section>
+
       <Mysliders/>
       <Addversment ShowAdssForm = {showAddsModal} hideAddsFrom={setShowAddsModal}/>
+      <RegestionForm/>
+      
     </>
   )
 }

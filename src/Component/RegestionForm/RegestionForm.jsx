@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './regestionStyle.css'
+import { getDatabase, ref,set , onValue ,push} from "firebase/database";
+import firebaseConfig from '../../Congigaration/FirebaseConfig';
 
 const RegestionForm = () => {
+
   let [signUpInputValue , setSingUpInputValue] = useState({
     signUpName : "" ,
     signUpMail : "" ,
@@ -27,8 +30,14 @@ const RegestionForm = () => {
   // ========HandleSingnUpInput Btn========
   let handleSignUpBtn =()=> {
 
+    const db = getDatabase();
+    const starCountRef = ref(db, 'hori');
+
     if(signUpInputValue.signUpName == ""){
       setSignUpError({signUpName : "Name Fild is Required"});
+    }
+    if(signUpInputValue.signUpMail == ""){
+      setSignUpError({signUpMail : "Name Fild is Required"});
     }
     
     let myarray = [...signUpValue];
@@ -38,11 +47,14 @@ const RegestionForm = () => {
       passWord : signUpInputValue.signUpPass
     })
     setSignUpValue(myarray)
-    
 
+    set(push(ref(db, 'hori')), {
+      Userdata : signUpInputValue
+    });
 
 
     console.log(myarray);
+    console.log(signUpInputValue);
 
   };
 
@@ -62,13 +74,13 @@ const RegestionForm = () => {
             </div>
 
             <div className="signUpMail">
-              <input type="email" id='signUpMail'name='signUpMail' placeholder='Enter your mail' onChange={signUpInput}/>
+              <input type="email" id='signUpMail'name='signUpMail' placeholder='Enter your mail' onChange={signUpInput} value={signUpInputValue.signUpMail}/>
               {signUpError.signUpMail &&
                 <p>{signUpError.signUpMail}</p>
               }
             </div>
             <div className="signUpPass">
-              <input type="password" id='signUpPass'name='signUpPass' placeholder='enter your password' onChange={signUpInput}/>
+              <input type="password" id='signUpPass'name='signUpPass' placeholder='enter your password' onChange={signUpInput} value={signUpInputValue.signUpPass}/>
               {signUpError.signUpPass &&
                 <p>{signUpError.signUpPass}</p>
               }
