@@ -1,98 +1,82 @@
-import React, { useState } from 'react';
-import './regestionStyle.css'
-import { getDatabase, ref,set , onValue ,push} from "firebase/database";
-import firebaseConfig from '../../Congigaration/FirebaseConfig';
+import React from 'react'
+import './regStyle.css'
+import { Button } from '@mui/material';
+import { Formik } from 'formik';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import TextField from '@mui/material/TextField';
 
 const RegestionForm = () => {
-
-  let [signUpInputValue , setSingUpInputValue] = useState({
-    signUpName : "" ,
-    signUpMail : "" ,
-    signUpPass : ""
+  const formik = useFormik({
+    initialValues: {
+      signInMail: '',
+      SigninPass:'',
+    },
+    validationSchema: Yup.object({
+        signInMail: Yup.string()
+        .email('Invalid email address')
+        .required('Required'),
+        SigninPass: Yup.string()
+         .max(8, 'Must be 10 characters or less')
+         .min(6, 'Must be 6 characters or much')
+         .required('Required'),
+    }),
+    onSubmit: values => {
+      // alert(JSON.stringify(values, null, 2));
+      console.log(values);
+    },
   });
-
-  let [signUpError , setSignUpError] = useState({
-    signUpName : "" ,
-    signUpMail : "" ,
-    signUpPass : ""
-  })
-
-  let [signUpValue , setSignUpValue] = useState([]);
-
-  // ========HandleSingnUpInput========
-  let signUpInput =(e)=> {
-    let {name , value} = e.target;
-  
-    setSingUpInputValue({...signUpInputValue , [name] : value});
-    
-  };
-  // ========HandleSingnUpInput Btn========
-  // ========HandleSingnUpInput Btn========
-  let handleSignUpBtn =()=> {
-
-    const db = getDatabase();
-    const starCountRef = ref(db, 'hori');
-
-    if(signUpInputValue.signUpName == ""){
-      setSignUpError({signUpName : "Name Fild is Required"});
-    }
-    if(signUpInputValue.signUpMail == ""){
-      setSignUpError({signUpMail : "Name Fild is Required"});
-    }
-    
-    let myarray = [...signUpValue];
-    myarray.push({
-      username : signUpInputValue.signUpName,
-      usermali : signUpInputValue.signUpMail,
-      passWord : signUpInputValue.signUpPass
-    })
-    setSignUpValue(myarray)
-
-    set(push(ref(db, 'hori')), {
-      Userdata : signUpInputValue
-    });
-
-
-    console.log(myarray);
-    console.log(signUpInputValue);
-
-  };
-
-
   return (
     <>
-      <div id="regestionForm">
-        <div className="container">
-          <div className="signupWarpper">
-            <h2>Sign Up</h2>
+      <div id="Reg_form">
+        <div className="login_warpper">
+            <div className="loginform">
+                <form onSubmit={formik.handleSubmit}>
+                    <h2 className='loginHeading'>
+                      Verify Your Creadential
+                    </h2>
+                  <div className="signInputs">
 
-            <div className="signUpName">
-              <input type="text" id='signUpName'name='signUpName' placeholder='Enter your name' onChange={signUpInput} value={signUpInputValue.signUpName}/>
-              {signUpError.signUpName &&
-                <p>{signUpError.signUpName}</p>
-              }
-            </div>
+                    <TextField 
+                    fullWidth 
+                    label="Standard" 
+                    variant="standard"
+                    id="signInMail"
+                    name="signInMail"
+                    type="signInMail"
+                    onChange={formik.handleChange}
+                    value={formik.values.signInMail}
+                     />
+                     {formik.touched.signInMail && formik.errors.signInMail ? (
+                      <div>{formik.errors.signInMail}</div>
+                    ) : null}
+                     <TextField 
+                    fullWidth 
+                    label="Standard" 
+                    variant="standard"
+                    id="SigninPass"
+                    name="SigninPass"
+                    type="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.SigninPass}
+                     />
+                     {formik.touched.SigninPass && formik.errors.SigninPass ? (
+                      <div>{formik.errors.SigninPass}</div>
+                    ) : null}
 
-            <div className="signUpMail">
-              <input type="email" id='signUpMail'name='signUpMail' placeholder='Enter your mail' onChange={signUpInput} value={signUpInputValue.signUpMail}/>
-              {signUpError.signUpMail &&
-                <p>{signUpError.signUpMail}</p>
-              }
+                  </div>
+                  <div className="signBtn">
+                     <Button 
+                     variant="contained" 
+                     color="success"
+                     type='submit'>Sign In</Button>
+                     <span>forgot password?</span>
+                  </div>
+                     <p>
+                      Dont Have Account ! <a href="#">SignUp here</a>
+                     </p>
+                </form>
             </div>
-            <div className="signUpPass">
-              <input type="password" id='signUpPass'name='signUpPass' placeholder='enter your password' onChange={signUpInput} value={signUpInputValue.signUpPass}/>
-              {signUpError.signUpPass &&
-                <p>{signUpError.signUpPass}</p>
-              }
-            </div>
-
-            <div className="SignUpConfirmPass">
-              <input type="password" id='confirmSignUpPass'name='confirmSignUpPass' placeholder='enter your password' onChange={signUpInput}/>
-            </div>
-            <button onClick={handleSignUpBtn} id='signUpBtn'>signup</button>
-            
-
-          </div>
         </div>
       </div>
     </>
@@ -100,3 +84,4 @@ const RegestionForm = () => {
 }
 
 export default RegestionForm
+

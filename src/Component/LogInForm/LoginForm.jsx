@@ -1,81 +1,132 @@
 import React from 'react'
-import { useState } from 'react';
 import './loginStyle.css'
+import { Button, Typography, styled } from '@mui/material';
+import { Formik } from 'formik';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import TextField from '@mui/material/TextField';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
-import { FcGoogle } from "react-icons/fc";
-import { FaSquareFacebook } from "react-icons/fa6";
-import { FaRegUser } from "react-icons/fa";
-import { RiLockPasswordLine } from "react-icons/ri";
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
-const LoginForm = ({show , hide}) => {
 
-    // let [userLoginInput, setUserLoginInput] = useState("");
-    let [text , setText] = useState("");
-    let [showSignUp , setshowSingnUp] = useState(false);
 
-    let handleLoginInput = (e)=>{
-        setText = e.target.value;
-    };
-
-    let handleloginBtn = ()=>{
-        console.log(text);
-    };
-
-    let hanndleClose = ()=>{
-        hide(false)
-    };
-
-    
+const LoginForm = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const formik = useFormik({
+    initialValues: {
+      signInMail: '',
+      SigninPass:'',
+    },
+    validationSchema: Yup.object({
+        signInMail: Yup.string()
+        .email('Invalid email address')
+        .required('Required'),
+        SigninPass: Yup.string()
+         .max(8, 'Must be 10 characters or less')
+         .min(6, 'Must be 6 characters or much')
+         .required('Required'),
+    }),
+    onSubmit: values => {
+      // alert(JSON.stringify(values, null, 2));
+      console.log(values);
+    },
+  });
   return (
     <>
-    {show &&
-        <div className="loginMain">
-                
-            <div id="loginForm">
-                <div onClick={hanndleClose} className="box">X</div>
-                    <h2>Log In</h2>
+    <div id="login_form">
+        <div className="login_warpper">
+            <div className="loginform">
+                <form onSubmit={formik.handleSubmit}>
+                    <h2 className='loginHeading'>
+                      Verify Your Creadential
+                    </h2>
+                  <div className="signInputs">
 
+                    <TextField 
+                    fullWidth 
+                    label="Standard" 
+                    variant="standard"
+                    id="signInMail"
+                    name="signInMail"
+                    type="signInMail"
+                    onChange={formik.handleChange}
+                    value={formik.values.signInMail}
+                     />
+                     {formik.touched.signInMail && formik.errors.signInMail ? (
+                      <div>{formik.errors.signInMail}</div>
+                    ) : null}
+                     <TextField 
+                    fullWidth 
+                    label="Standard" 
+                    variant="standard"
+                    id="SigninPass"
+                    name="SigninPass"
+                    type="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.SigninPass}
+                     />
+                     {formik.touched.SigninPass && formik.errors.SigninPass ? (
+                      <div>{formik.errors.SigninPass}</div>
+                    ) : null}
 
-                    <div className="userMail">
-                        <span className='inputUserIconIcon'><FaRegUser /></span>
-                        <input onChange={handleLoginInput} type="text" placeholder='Enter your Email/UserName'/>
-                    </div>
+                  </div>
+                  <div className="signBtn">
+                     <Button 
+                     variant="contained" 
+                     color="success"
+                     type='submit'>Sign In</Button>
+                     <span onClick={handleOpen}>forgot password?</span>
+                  </div>
+                     <p>
+                      Dont Have Account ! <a href="#">SignUp here</a>
+                     </p>
+                </form>
 
-                    <div className="userPassword">
-                        <span className='inputPassIcon'><RiLockPasswordLine /></span>
-                        <input type="password" placeholder='Confirm your passWord'/>
-                    </div>
-                    
-                    <div className="loginHelp">
-                        <p>
-                            <input type="checkbox" id='rememberMe'/>
-                            <label htmlFor="rememberMe">remember me</label>
-                        </p>
-                        <p><a href="#">Forgot Account</a></p>
-                    </div>
-                    <button onClick={handleloginBtn} className='loginBtn'>Log in</button>
-                    <br />
-                    <p>Don't have account? <a href="#">Sign Up here</a></p>
+                <div>        
+                  <Modal
+                    keepMounted
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="keep-mounted-modal-title"
+                    aria-describedby="keep-mounted-modal-description"
+                  >
+                    <Box sx={style}>
+                      <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+                        enter your recovery password
+                      </Typography>
+                      
+                      <TextField 
+                        fullWidth 
+                        label="Standard" 
+                        variant="standard"
+                        id="signInMail"
+                        name="signInMail"
+                        type="signInMail"
+                        onChange={formik.handleChange}
+                        value={formik.values.signInMail}
+                        />
+                        <Button variant="contained" type='submit'>rest password</Button>
+                    </Box>
+                  </Modal>
+                </div>
 
-                    <div className="loginWith">
-                        <div className="loginWithGoogle">
-                            <button className='loginWithGoogleBtn'>
-                                <span><FcGoogle /></span>
-                                <span>login with google</span>
-                            </button>
-                        </div>
-                        <div className="loginWithFacebook">
-                            <button className='loginWithFacebookBtn'>
-                                <span className='facebookIcon'><FaSquareFacebook /></span>
-                                <span>login with Facebook</span>
-                            </button>
-                        </div>
-                    </div>
             </div>
         </div>
-    }
-
-    
+    </div>
     </>
   )
 }
